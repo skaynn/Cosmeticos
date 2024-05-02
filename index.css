@@ -1,134 +1,430 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cosmeticos</title>
-    <link rel="website icon" type="png" href="imagens/db126d32b5ac3c625448fb78a10a1f04.jpg">
+/*======================FONTE======================*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500&display=swap");
+@import url(https://fonts.google.com/specimen/DynaPuff?query=Dyna);
 
-<!--==========================CSS==========================-->
-    <link rel="stylesheet" href="index.css">
+/*======================VARIAVEIS======================*/
+:root {
+    --header-height: 3.5rem;
 
-<!--==========================Remixes======================-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+    /*======================COR======================*/
+    --white-color:hsl(0, 0%, 100%);
+    --black-color: hsl(0, 0%, 0%);
+    --gray-color: #20150d;
+
+    /*======================FONTE E TIPOGRAFIA======================*/
+    --body-font: "Montserrat Alternates", sans-serif;
+    --h1-font-size: 1.5rem;
+    --normal-font-size: .938rem;
+
+    /*======================TAMANHO DA FONTE======================*/
+    --font-regular: 400;
+    --font-medium: 500;
+
+    /* z index*/
+    --z-tooltip: 10;
+    --z-fixed: 100;
+}
+/*======================Tipografia Responsiva======================*/
+@media screen and (min-widht: 1150px) {
+    :root {
+    --normal-font-size: 1rem;
+    }    
+}
+
+/*======================BASE======================*/
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-image: url(imagens/Faça\ sua\ pessoa\ amada\ feliz!.jpg);
+    background-repeat: no-repeat ;
+    background-position: center;
+    width: 100vh;
+    height: 100vh;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--gray-color);
+    margin: 0;
+    padding: 0;
     
-<!--==========================Remixes======================-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap" rel="stylesheet">
+}
 
-</head>
-<body>
-<!--==========================CABEÇALHO==========================-->
-    <header class="header" id="header">
-        <nav class="nav__container">
-            <a href="#" class="nav__logo"></a>
+ul {
+    list-style: none;
+}
 
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                    <li class="nav__item">
-                        <a href="#" class="nav__link"><img  class="natura" src="imagens/file.jpg">
-                            <i class="ri-arrow-right-up-line"></i>
-                        </a>
-                    </li>
+a{
+    text-decoration: none;
+}
 
-                    <li class="nav__item">
-                        <a href="#" class="nav__link"><img class="Avon" src="imagens/bc0899d9e22573bda3be4604af9aea1d.jpg">
-                            <i class="ri-arrow-right-up-line"></i>
-                        </a>
-                    </li>
+/*======================CLASES======================*/
 
+.container {
+    max-width: 1120px;
+    margin-inline: 1.5rem;
+}
 
-                    <li class="nav__item">
-                        <a href="#" class="nav__link">
-                            <i class="ri-arrow-right-up-line"></i>
-                            <span>Home</span>
-                        </a>
-                    </li>
+/*======================HEADER E NAV======================*/
 
-                    <li class="nav__item">
-                        <a href="https://encurtador.naturaavon.com/d2DhLLc" class="nav__link">
-                            <i class="ri-arrow-right-up-line"></i>
-                            <span>Catalogo Avon</span>
-                        </a>
-                    </li>
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: var(--black-color);
+    z-index: var(--z-fixed);
+}
 
-                    <li class="nav__item">
-                        <a href="https://encurtador.naturaavon.com/nCwV3gW" class="nav__link">
-                            <i class="ri-arrow-right-up-line"></i>
-                            <span>Catalogo Natura</span>
-                        </a>
-                    </li>
+.nav {
+    position: relative;
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-                    <li class="nav__item">
-                        <a href="#" class="nav__link">
-                            <i class="ri-arrow-right-up-line"></i>
-                            <span>Produtos Pronta Entrega</span>
-                        </a>
-                    </li>
+.nav__logo {
+    color: var(--white-color);
+    font-weight: var(--font-medium);
+}
 
-                    <li class="nav__item">
-                        <a href="#" class="nav__link">
-                            <i class="ri-arrow-right-up-line"></i>
-                            <span>Produtos Agedamento</span>
-                        </a>
-                    </li>
+.nav__close,
+.nav__toggle {
+    display: flex;
+    color: var(--white-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
 
-                    <li class="nav__item">
-                        <a href="contato.html" class="nav__link">
-                            <i class="ri-arrow-right-up-line"></i>
-                            <span>contato</span>
-                        </a>
-                    </li>
-                </ul>
+/*======================NAVEGAÇÃO MOBILE======================*/
+@media screen and (max-width: 1150px) {
+    .nav__menu {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        background-color: var(--black-color);
+        width: 100%;
+        height: 100%;
+        padding: 6rem 3.5rem 4.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: left .4s;
+    }
 
-<!--==========================Botão Fechar==========================-->
-                <div class="nav__close" id="nav-close">
-                    <i class="ri-close-large-line"></i>
-                </div>
+    .nav__item {
+        transform: translateX(-150px);
+        visibility: hidden;
+        transition: transform .4s ease-out, visibility .4s;
+    }
 
-                <div class="nav__social">
-                    <a href="" target="_blank" class="nav__social-link">
-                        <i class="ri-Instagram-line"></i>
-                    </a>
-
-                    <a href="" target="_blank" class="nav__social-link">
-                        <i class="ri-Whatssap-line"></i>
-                    </a>
-<!--======================Vai repetindo o processo para todos os links======================-->
-                </div>
-            </div>
-
-<!--======================Alternar Botão======================-->
-            <div class="nav__toggle" id="nav-toggle">
-                <i class="ri-menu-line"></i>
-            </div>
-        </nav>
-    </header>
-
-<!--======================Slide Show======================-->
-    <div class="slides">
-        <div class="slide slide-1">
-            <img src="imagens/Natura1.jpg" alt="lalala">
-        </div>
-        <div class="slide slide-2">
-            <img src="imagens/IMG-20240430-WA0062.jpg" alt="lelele">
-        </div>
-        <div class="slide slide-3">
-            <img src="imagens/Natura 3.jpg" alt="lilili">
-        </div>
-        <div class="slide slide-4">
-            <img src="imagens/Natura 4.jpg" alt="lololo">
-        </div>
-    </div>  
-
-<!--======================Decoração======================-->
-    <h1 class="texto_central">Faça a sua pessoa</h1>
-    <h1 class="texto_central1">amada feliz!</h1>
-    <img class="Imagem_Maes" src="imagens/1714652463501.png" alt="">   
-    <h3 class="feliz"> Feliz dia Das Mães</h3>
+    .nav__item:nth-child(1) {
+        transition-delay: .1s;
+    }
     
-<!--======================Script======================-->
-    <script src="index.js"></script>
-</body>
-</html>
+    .nav__item:nth-child(2) {
+        transition-delay: .2s;
+    }
+
+    .nav__item:nth-child(3) {
+        transition-delay: .3s;
+    }
+
+    .nav__item:nth-child(4) {
+        transition-delay: .4s;
+    }
+
+    .nav__item:nth-child(5) {
+        transition-delay: .5s;
+    }
+}
+
+.nav__list,
+.nav__social {
+    display: flex;
+}
+
+.nav__list {
+    flex-direction: column;
+    row-gap: 3rem;
+}
+
+.nav__link {
+    position: relative;
+    color: var(--white-color);
+    font-size: var(--h1-font-size);
+    font-weight: var(--font-medium);
+    display: inline-flex;
+    align-items: center;
+    transition: opacity .4s;
+}
+
+.nav__link i {
+    font-size: 2rem;
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .4s, visibility .4s;
+}
+
+.nav__link span {
+    position: relative;
+    transition: margin .4s;
+}
+
+.nav__link span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background-color: var(--white-color);
+    transition: width .4s ease-out;
+}
+
+/*======================ANIMAÇÃO LINK======================*/
+.nav__link:hover span {
+    margin-left: 2.5rem;
+}
+
+.nav__link:hover i {
+    opacity: 1;
+    visibility: visible;
+}
+
+.nav__link:hover span::after {
+    width: 100%;
+}
+
+/*======================FADE======================*/
+
+.nav__list:has(.nav__link:hover) .nav__link:not(:hover) {
+    opacity: .4;
+}
+
+.nav__close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+}
+
+.nav__social {
+    column-gap: 1rem;
+}
+
+.nav__social-link {
+    color: var(--white-color);
+    font-size: 1.5rem;
+    transition: transform .4s;
+}
+
+.nav__social-link:hover {
+    transform: translateY(-.25rem);
+}
+
+/*======================MENU======================*/
+.show-menu {
+    left: 0;
+}
+
+/*======================ANIMAÇÃO LINK======================*/
+.show-menu .nav__item {
+    visibility: visible;
+    transform: translateX(0);
+}
+
+/*======================BREAKPOINT======================*/
+
+@media screen and (min-width: 1150px) {
+    .container {
+        margin-inline: auto;
+    }
+
+    .nav__toggle,
+    .nav__close {
+        display: none;
+    }
+
+    .nav__link {
+        font-size: var(--normal-font-size);
+    }
+
+    .nav__link i {
+        font-size: 1.5rem;
+    }
+
+    .nav__list {
+        flex-direction: row;
+        column-gap: 3.5rem;
+    }
+
+    .nav__menu {
+        display: flex;
+        align-items: center;
+        column-gap: 3.5rem;
+        
+    }
+
+    .natura {
+        width: 50px;
+    }
+
+    .Avon {
+        width: 50px;
+    }
+}
+/*======================SLIDE SHOW======================*/
+
+.slides{
+    height: 100vh;
+    width: 40%;
+    overflow:hidden;
+    position: absolute;
+    justify-content: center;
+    filter: grayscale(70%);
+    left: 50%;
+}
+.slide{
+    position: absolute;
+    height: 70vh;
+    opacity: 0;
+    inset: 0;
+    animation: slide-show 12s infinite;
+    top: 19%;
+    left: 17%;
+}
+
+.slides:hover{
+    filter: grayscale(0%);
+    filter: saturate(120%);
+}
+
+.slide-2{
+    animation-delay: 4s;
+}
+
+.slide-3 {
+    animation-delay: 8s;
+}
+
+.slide-4 {
+    animation-delay: 10s;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+@keyframes slide-show{
+    0%{
+        opacity: 0;
+    }
+    10%{
+        opacity: 1;
+    }
+    20%,
+    30%{
+        opacity: 1;
+        scale: 1.03;
+    }
+    50%{
+        opacity: 0;
+    }
+}
+
+/*======================DECORAÇÃO======================*/
+.texto_central {
+    position: absolute;
+    text-align: center;
+    top: 45%;
+    left: 8%;
+    color: white;
+    background-position: center;
+    background-clip: text;
+    filter: saturate(200%);
+    font-family: 'dynapuff';
+    font-size: 8vh;
+}
+
+.texto_central1{
+    position: absolute;
+    text-align: center;
+    top: 52%;
+    left: 12%;
+    color: white;
+    background-position: center;
+    background-clip: text;
+    filter: saturate(200%);
+    font-family: 'dynapuff';
+    font-size: 8vh;
+}
+
+.Imagem_Maes {
+    position: absolute;
+    width: 9%;
+    top: 20%;
+    left: 21%;
+}
+
+.feliz {
+    position: absolute;
+    font-size: xx-large;
+    top: 30vh;
+    color: white;
+    left: 16%;
+    font-size: 4vh;
+}
+
+/*======================CONTATO======================*/
+.insta {
+    position: absolute;
+    top: 40vh;
+    width: 10%;
+    left: 35%;
+    filter: grayscale(100%);
+}
+
+.zap {
+    position: absolute;
+    top: 40vh;
+    width: 10%;
+    left: 50%;
+    filter: grayscale(100%);
+}
+
+.insta:hover {
+    filter: grayscale(0%);
+    filter: saturate(250%);
+}
+
+.zap:hover {
+    filter: grayscale(0%);
+    filter: saturate(250%);
+}
+
+.texto_contatos {
+    position: absolute;
+    text-align: center;
+    top: 30%;
+    left: 38%;
+    background-image: url(imagens/VID-20240430-WA0015.gif);
+    background-repeat: no-repeat ;
+    color: transparent;
+    background-position: center;
+    background-clip: text;
+    filter: saturate(200%);
+}
