@@ -350,7 +350,7 @@ a{
 .texto_central {
     position: absolute;
     text-align: center;
-    top: 45%;
+    top: 51%;
     left: 8%;
     color: white;
     background-position: center;
@@ -363,7 +363,7 @@ a{
 .texto_central1{
     position: absolute;
     text-align: center;
-    top: 52%;
+    top: 60%;
     left: 12%;
     color: white;
     background-position: center;
@@ -376,17 +376,18 @@ a{
 .Imagem_Maes {
     position: absolute;
     width: 9%;
-    top: 20%;
+    top: 29%;
     left: 20%;
 }
 
 .feliz {
     position: absolute;
     font-size: xx-large;
-    top: 30vh;
+    top: 38vh;
     color: white;
     left: 16%;
-    font-size: 4vh;
+    font-size: 5vh;
+    font-family: 'sacramento';
 }
 
 /*======================CONTATO======================*/
